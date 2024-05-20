@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
+import { AmplifyAuthenticatorModule  } from '@aws-amplify/ui-angular';
 import { getCurrentUser } from 'aws-amplify/auth';
 
 @Component({
@@ -9,7 +9,7 @@ import { getCurrentUser } from 'aws-amplify/auth';
   standalone: true,
   imports: [RouterOutlet, RouterModule, CommonModule, AmplifyAuthenticatorModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   constructor(){
