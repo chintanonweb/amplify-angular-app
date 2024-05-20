@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Router, RouterModule, RouterOutlet } from '@angular/router';
-import { CognitoService } from './service/cognito.service';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
+import { getCurrentUser } from 'aws-amplify/auth';
 
 @Component({
   selector: 'app-root',
@@ -12,26 +12,10 @@ import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'amplify-angular-app';
-  
-  isAuthenticated: boolean;
-
-  constructor(private router: Router,
-              private cognitoService: CognitoService) {
-    this.isAuthenticated = false;
+  constructor(){
+   const test: any = getCurrentUser();
+    console.log("test", test);
   }
 
-  public ngOnInit(): void {
-    this.cognitoService.isAuthenticated()
-    .then((success: boolean) => {
-      this.isAuthenticated = success;
-    });
-  }
 
-  public signOut(): void {
-    this.cognitoService.signOut()
-    .then(() => {
-      this.router.navigate(['/signIn']);
-    });
-  }
 }
